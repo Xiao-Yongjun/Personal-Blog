@@ -8,10 +8,10 @@ let $router=useRouter()
   <el-row style="width: 100%;">
     <el-col :span="12">
        <div class="logo">
-        <img src="../src/assets/Navigation-bar-icon/Flyme博客logo.png" alt="">
+        <img src="../src/assets/Navigation-bar-icon/博客.png" alt="">
        </div>
     </el-col>
-    <el-col :span="12"><div class="grid-content ep-bg-purple-light" />
+    <el-col :span="12" style="padding-left: 85px;"><div class="grid-content ep-bg-purple-light" />
         <div class="right-navator">
           <div class="item" @click="$router.push({path:'/homepage/startpage'})">
                 <img src="../src/assets/Navigation-bar-icon/首页.png" alt="" class="img">
@@ -60,9 +60,6 @@ let $router=useRouter()
     </el-col>
   </el-row>
 </div>
-
-
-
   <router-view/>
 </template>
 
