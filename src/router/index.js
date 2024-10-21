@@ -9,6 +9,7 @@ import TreasureBox from '../views/TreasureBox/index.vue'
 import StartPage from '../views/HompPage/StartPage/index.vue'
 import record from '../views/record/index.vue'
 import message from '../views/Message/index.vue'
+import specialColumn from '../views/HompPage/specialColumn/index.vue'
 const router=createRouter({
     //路由的模式的设置
     history: createWebHistory(),
@@ -28,7 +29,12 @@ const router=createRouter({
                 {
                     path:'startpage',
                     component:StartPage
+                },
+                {
+                    path:'specialColumn',
+                    component:specialColumn
                 }
+              
             ],
             meta:{
                 title:'首页'

@@ -8,14 +8,28 @@ let $router=useRouter()
   <el-row style="width: 100%;">
     <el-col :span="12">
        <div class="logo">
-        <img src="../src/assets/Navigation-bar-icon/博客.png" alt="">
+        <img src="../src/assets/Navigation-bar-icon/我的博客 (1).png" alt="">
        </div>
     </el-col>
     <el-col :span="12" style="padding-left: 85px;"><div class="grid-content ep-bg-purple-light" />
         <div class="right-navator">
-          <div class="item" @click="$router.push({path:'/homepage/startpage'})">
+          <div class="item">
                 <img src="../src/assets/Navigation-bar-icon/首页.png" alt="" class="img">
-                <div class="text">首页</div>
+                <div class="text">
+                  <el-dropdown>
+                    <span class="el-dropdown-link" @click="$router.push({path:'/homepage/startpage'})">
+                       首页
+                      </span>
+                      <template #dropdown>
+                          <el-dropdown-menu>
+                            <el-dropdown-item @click="$router.push({path:'/homepage/startpage'})">开始页面</el-dropdown-item>
+                            <el-dropdown-item @click="$router.push({path:'/homepage/specialColumn'})">专栏</el-dropdown-item>
+                            <el-dropdown-item>Action 3</el-dropdown-item>
+                            
+                          </el-dropdown-menu>
+                        </template>
+                  </el-dropdown>
+                </div>
               <div class="progress-border"></div>
           </div>
           <div class="item" @click="$router.push({path:'/home'})">
@@ -69,7 +83,7 @@ let $router=useRouter()
    position: fixed; 
     top: 0; // 距离顶部的距离
     z-index: 1000; // 确保导航栏在其他元素之上
-    background-color: rgba(255, 255, 255,0);
+    background-color: rgba(0, 0, 0,0.1);
     transition: background-color 0.3s ease, backdrop-filter 0.3s ease; // 添加过渡效果
     width: 100%;
       .logo{
@@ -79,6 +93,7 @@ let $router=useRouter()
         align-items: center;
       
         padding-left: 40px;
+        
       }
       .right-navator{
         width: 100%;
@@ -98,6 +113,9 @@ let $router=useRouter()
         }
         .item{
           
+        
+        
+        
           display: flex;
           position: relative;
           cursor: pointer;
@@ -136,7 +154,8 @@ let $router=useRouter()
     
 }
 .navitor:hover {
-    background-color: rgba(0, 0, 0, 0.2); /* 半透明的黑色 */
+    background-color: rgba(0, 0, 0, 0.5); /* 半透明的黑色 */
+   
     
 }
 </style>

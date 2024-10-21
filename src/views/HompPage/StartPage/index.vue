@@ -29,6 +29,9 @@
                     :prefix-icon="Search"
                     />
             </div>
+            <transition
+            :name="open ? 'slide-up' : 'slide-down'"
+            appear> 
     <div class="shade" v-if="open">
            <div class="box">
             <div class="closebox" @click="closebox">返回</div>
@@ -47,14 +50,15 @@
                 </div>
             </div>
             <div class="content">
-                <div class="item" v-for="item in 25" :key="item">
-                    <img src="../../../assets/Navigation-bar-icon/bg.jpg" alt="" class="plc">
-                    <div class="title">这是个标题</div>
+                <div class="item" v-for="item in 20" :key="item">
+                    <img src="../../../assets/Navigation-bar-icon/bg1.jpg" alt="" class="plc">
+                    <div class="title">我的房东阿姨</div>
                 </div>
             </div>
            </div>
+           
     </div>
-          
+</transition>
      </div>
 </template>
     
@@ -74,29 +78,59 @@ const closebox=()=>{
     
 
 <style lang="scss" scoped>
+.slide-up-enter-active,
+.slide-up-leave-active,
+.slide-down-enter-active,
+.slide-down-leave-active {
+    transition: all 1s ease-out;
+}
+
+.slide-up-enter-from,
+.slide-up-leave-to,
+.slide-down-enter-from,
+.slide-down-leave-to {
+    transform: translateY(100%);
+}
 @keyframes fadeInOut {
     0%, 100% { opacity: 1; } /* 开始和结束时完全可见 */
     50% { opacity: 0; } /* 在中间时完全不可见 */
 }
-
+@keyframes slideUp {
+    from {
+        transform: translateY(100%);
+    }
+    to {
+        transform: translateY(0);
+    }
+}
+@keyframes slideDown {
+    from {
+        transform: translateY(0);
+    }
+    to {
+        transform: translateY(100%);
+    }
+}
     .startpage{
         width: 100%;
         height: 100vh;
         background-size: cover;
-        background-image: url('../../../assets/Navigation-bar-icon/bg.jpg');
+        background-image: url('../../../assets/Navigation-bar-icon/bg1.jpg');
         padding-top: 80px;
         position: relative;
         .shade{
-            position: absolute;
+            position: fixed;
             top: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0,0,0,0.5);
+            background-color: rgba(0,0,0,0.25);
             z-index: 3301;
             padding-top: 100px;
+         
+           
             .box{
                 width: 800px;
-                height: 300px;
+                height: 300px ;
                 margin: auto;
                 .closebox{
                     width: 100%;
@@ -148,7 +182,7 @@ const closebox=()=>{
                             width: 50px;
                             height: 20px;
                             margin: 5px;
-                            background-color: #e9c6c6;
+                            background-color:rgba(0, 0, 0, 0.3);
                             border-radius: 5px;
                             text-align: center;
                             line-height: 20px;
@@ -166,9 +200,9 @@ const closebox=()=>{
                 }
                 .content{
                     width: 900px;
-                
+                border-radius: 8px;
                     margin: auto;
-                   background-color: rgba(0,0,0,0.5);
+                   background-color: rgba(199, 135, 135, 0.4);
                    padding-top: 5px;
                    display: flex;
                    flex-wrap: wrap;
@@ -176,7 +210,8 @@ const closebox=()=>{
                         width: 70px;
                       margin: 10px;
                         height: 100px;
-                       
+                       border-radius: 3px;
+                       overflow: hidden;
                         .plc{
                             width: 100%;
                             height: 80px;
