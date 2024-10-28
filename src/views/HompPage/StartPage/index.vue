@@ -116,6 +116,7 @@ const closebox=()=>{
         height: 100vh;
         background-size: cover;
         background-image: url('../../../assets/Navigation-bar-icon/bg1.jpg');
+        background-position: center;
         padding-top: 80px;
         position: relative;
         .shade{
