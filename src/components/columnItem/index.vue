@@ -21,7 +21,7 @@
   <style lang="scss" scoped>
   .column {
     width: 270px;
-    height: 250px;
+  
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     margin: 15px;
     background-color: #fff;

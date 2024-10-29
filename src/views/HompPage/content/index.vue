@@ -11,22 +11,67 @@
         </div>
         <div class="content-div">
             <div class="content-div-head">
-                    <div class="head-item" v-for="item in 4" :key="item">
-                        <div class="pic">
-                            <img src="../../../assets/Navigation-bar-icon/bg.jpg" alt="">
-                        </div>
-                        <div class="text">
-                            <div class="topText">春天到了</div>
-                            <div class="bottomText">万物复苏，我要牛逼死了</div>
-                        </div>
+                <div class="head-item" v-for="item in 4" :key="item">
+                    <div class="pic">
+                        <img src="../../../assets/Navigation-bar-icon/bg.jpg" alt="">
                     </div>
+                    <div class="text">
+                        <div class="topText">春天到了</div>
+                        <div class="bottomText">万物复苏，我要牛逼死了</div>
+                    </div>
+                </div>
             </div>
+            <div class="content-div-box">
+                <titleBar :title=title>
+                    <template #icon>
+                        <div>
+                            <el-icon>
+                                <Menu />
+                            </el-icon>
+                        </div>
+                    </template>
+                </titleBar>
+                <div class="div-box">
+                    <div class="box-left">
+                        <columnItem style="width: 100%;" />
+                    </div>
+                    <div class="box-right">
+                        <columnItem />
+                        <columnItem />
+                    </div>
+
+                </div>
+                <titleBar :title=title>
+                    <template #icon>
+                        <div>
+                            <el-icon>
+                                <Menu />
+                            </el-icon>
+                        </div>
+                    </template>
+                </titleBar>
+                <div class="video-box">
+                    <columnItem v-for="item in 8" :key="item" />
+                </div>
+                <div class="Paginator">
+                    <el-pagination v-model:current-page="currentPage4" v-model:page-size="pageSize4"
+                        :page-sizes="[100, 200, 300, 400]" :size="size" :disabled="disabled" :background="background"
+                        layout="total, sizes, prev, pager, next, jumper" :total="400" @size-change="handleSizeChange"
+                        @current-change="handleCurrentChange" />
+                </div>
+            </div>
+
         </div>
     </div>
+    <Foot />
 </template>
 
 <script setup>
-
+import { ref } from 'vue';
+import titleBar from '../../../components/titleBar/index.vue'
+let title = ref('标题')
+import columnItem from '../../../components/columnItem/index.vue'
+import Foot from '../../../components/Foot/index.vue';
 </script>
 
 <style lang="scss" scoped>
@@ -92,6 +137,9 @@
     .content-div {
         width: 100%;
         position: relative;
+        background-color: rgba(224, 250, 245);
+
+        padding-top: 100PX;
 
         .content-div-head {
             position: absolute;
@@ -101,47 +149,101 @@
             top: -35px;
             left: 50%;
             right: 50%;
-            border: 1px solid green;
-            transform: translateX(-50%); /* 添加这一行 */
+
+            transform: translateX(-50%);
+            /* 添加这一行 */
             padding: none;
-            .head-item{
+
+            .head-item {
                 width: 250px;
                 height: 50px;
                 margin: 10px;
                 display: flex;
-                border: 1px solid pink;
+                background-color: rgba(255, 255, 255, 0.5);
+                border-radius: 5px;
                 box-shadow: 5px 10px 20px rgba(25, 25, 25, 0.8);
-                .pic{
+
+                .pic {
                     width: 40px;
                     height: 40px;
                     overflow: hidden;
                     border-radius: 50%;
                     margin-left: 15px;
                     margin-top: 5px;
-                    img{
+
+                    img {
                         width: 100%;
                         height: 100%;
                     }
-           
+
                     left: 10px;
                     top: 0px;
                 }
-                .text{
+
+                .text {
                     width: 100%;
                     height: 50px;
                     display: flex;
                     flex-direction: column;
                     justify-content: space-around;
                     text-align: center;
-                    .topText{
+
+                    .topText {
                         font-size: 14px;
                     }
-                    .bottomText{
+
+                    .bottomText {
                         font-size: 14px;
-                       
+
                     }
                 }
             }
+
+            .head-item:hover {
+                transform: scale(1.3);
+                transition: transform 0.3s ease;
+                /* 可选：平滑过渡效果 */
+            }
+        }
+
+        .content-div-box {
+            width: 1200px;
+            margin: auto;
+
+            .div-box {
+                width: 100%;
+                display: flex;
+                justify-content: space-between;
+
+                .box-left {
+                    width: 49%;
+
+                }
+
+                .box-right {
+                    width: 49%;
+                    display: flex;
+                }
+            }
+
+            .video-box {
+                width: 100%;
+                display: flex;
+                justify-content: space-between;
+                flex-wrap: wrap;
+            }
+
+            .Paginator {
+
+                width: 100%;
+                height: 40px;
+
+                align-items: center;
+                display: flex;
+                justify-content: center;
+                text-align: center;
+            }
+
         }
     }
 }
