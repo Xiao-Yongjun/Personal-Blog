@@ -20,7 +20,7 @@
                   <el-dropdown-menu>
                     <el-dropdown-item @click="$router.push({ path: '/homepage/startpage' })">开始页面</el-dropdown-item>
                     <el-dropdown-item @click="$router.push({ path: '/homepage/specialColumn' })">专栏</el-dropdown-item>
-                    <el-dropdown-item>Action 3</el-dropdown-item>
+                    <el-dropdown-item @click="$router.push({path:'/homepage/content'})">内容</el-dropdown-item>
                   </el-dropdown-menu>
                 </template>
               </el-dropdown>
