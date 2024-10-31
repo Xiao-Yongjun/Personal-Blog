@@ -25,4 +25,54 @@ export function formatDateTime(timestamp) {
         seconds: seconds
     };
 }
+ export function getTimeDifference(inputDate) {
+    // 将输入的时间字符串转换为 Date 对象
+    const targetDate = new Date(inputDate);
+    
+    // 获取当前时间
+    const now = new Date();
+    
+    // 计算时间差（以毫秒为单位），确保时间差为正数
+    const difference = Math.abs(now - targetDate);
 
+    // 如果时间差小于1秒，返回0
+    if (difference < 1000) {
+        return {
+            years: 0,
+            months: 0,
+            days: 0,
+            hours: 0,
+            minutes: 0,
+            seconds: 0
+        };
+    }
+
+    // 计算年、月、日、时、分、秒
+    const seconds = Math.floor(difference / 1000);
+    const minutes = Math.floor(seconds / 60);
+    const hours = Math.floor(minutes / 60);
+    const days = Math.floor(hours / 24);
+    const months = Math.floor(days / 30); // 简化处理，假设每个月30天
+    const years = Math.floor(months / 12);
+
+    // 计算剩余的天数、小时、分钟和秒
+    const remainingDays = days % 30;
+    const remainingHours = hours % 24;
+    const remainingMinutes = minutes % 60;
+    const remainingSeconds = seconds % 60;
+
+    return {
+        years,
+        months,
+        days: remainingDays,
+        hours: remainingHours,
+        minutes: remainingMinutes,
+        seconds: remainingSeconds
+    };
+}
+
+// 示例用法
+const inputDate = "2023-01-01T00:00:00"; // 输入的时间
+const result = getTimeDifference(inputDate);
+
+console.log(`距离现在的时间为：${result.years}年 ${result.months}月 ${result.days}天 ${result.hours}小时 ${result.minutes}分钟 ${result.seconds}秒`);
