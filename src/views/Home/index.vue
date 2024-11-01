@@ -114,29 +114,10 @@
                                                 </div>
                                         </div>
                                         <div class="choiceItemContent">
-                                                <div class="Messagebox">
-                                                        <div class="text">留言</div>
-                                                        <div class="textarea">
-                                                                <el-input v-model="textarea"
-                                                                        style="height: 100%; height: 100%;" :rows="2"
-                                                                        type="textarea" placeholder="搜索内容" />
-                                                        </div>
-                                                        <div class="text-bottom">
-                                                                <div class="bottom-left">
-                                                                        <img src="../../assets/Navigation-bar-icon/留言板.png"
-                                                                                alt="">
-                                                                        <img src="../../assets/Navigation-bar-icon/menu-心情随笔.png"
-                                                                                alt="">
-                                                                </div>
-                                                                <div class="bottom-right">
-                                                                        <el-button type="success"
-                                                                                round>Success</el-button>
-                                                                </div>
-                                                        </div>
-                                                </div>
+                                                <Messagebox /><!-- 留言 -->
                                                 <div class="comments">
 
-                                                        <div class="commentsItem" v-for="item in 6" :key="item" >
+                                                        <div class="commentsItem" v-for="item in 6" :key="item">
                                                                 <div class="item-left">
                                                                         <img src="../../assets/Navigation-bar-icon/bg.jpg"
                                                                                 alt="">
@@ -157,11 +138,12 @@
                         </div>
                 </div>
         </div>
-        <Foot/>
+        <Foot />
 </template>
 
 <script setup>
 import { getTimeDifference } from '../../utils/time'
+import Messagebox from '../../components/Messagebox/index.vue'
 import { ref } from 'vue';
 const result = ref('');
 const newyearsTime = ref('');
@@ -491,41 +473,6 @@ import Foot from '../../components/Foot/index.vue'
 
                                         }
 
-                                        .Messagebox {
-                                                width: 100%;
-
-                                                .textarea {
-                                                        width: 100%;
-                                                        height: 100px;
-                                                        overflow-y: scroll;
-                                                        scrollbar-width: none;
-                                                        /* 隐藏滚动条（Firefox） */
-
-                                                        border-radius: 10px;
-                                                }
-
-                                                .text {
-                                                        width: 100%;
-                                                        height: 40px;
-                                                        line-height: 40px;
-                                                        font-size: 25px;
-                                                        color: #ff7e5f;
-                                                }
-
-                                                .text-bottom {
-                                                        display: flex;
-                                                        justify-content: space-between;
-                                                        height: 40px;
-                                                        align-items: center;
-
-                                                        .bottom-left {
-                                                                width: 100px;
-                                                                display: flex;
-                                                                justify-content: space-around;
-                                                        }
-                                                }
-
-                                        }
 
                                         .comments {
                                                 width: 100%;
@@ -534,13 +481,13 @@ import Foot from '../../components/Foot/index.vue'
                                                 .commentsItem {
                                                         display: flex;
                                                         border-bottom: 1px dashed black;
-                                                     height: 120px;
+                                                        height: 120px;
                                                         width: 100%;
-                                                      
-                                                       
+
+
 
                                                         .item-left {
-                                                                width:10%;
+                                                                width: 10%;
                                                                 height: 50px;
                                                                 display: flex;
                                                                 justify-content: center;
@@ -548,14 +495,14 @@ import Foot from '../../components/Foot/index.vue'
                                                                 bottom: 1px solid black;
 
                                                                 img {
-                                                                        width:80px;
+                                                                        width: 80px;
                                                                         height: 50px;
                                                                 }
                                                         }
 
                                                         .item-right {
                                                                 width: 90%;
-                                                            
+
 
                                                                 .right-top {
                                                                         width: 100%;
