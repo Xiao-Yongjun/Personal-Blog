@@ -78,7 +78,7 @@ const router = createRouter({
 			},
 		},
 		{
-			path: "/recard",
+			path: "/record",
 			component: record,
 			meta: {
 				title: "记录",
