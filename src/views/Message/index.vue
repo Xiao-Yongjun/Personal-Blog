@@ -5,8 +5,9 @@
                         <div class="bulletchat-message" v-for="(item, index) in bulletchatList" :key="index" :style="{
                                 animationDuration: `${Math.random() * 5 + 5}s`,
                                 backgroundColor: `rgba(${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)}, 0.7)`,
-                                top: `${calculatePosition(index)}px`
+                                top: `${calculatePosition()}px`
                         }">
+                                <img :src="item.avatarUrl" alt="avatar" class="avatar" />
                                 {{ item.title }}
                         </div>
                 </div>
@@ -19,15 +20,15 @@
                 </div>
         </div>
 </template>
-<script setup lang='ts'>
+<script setup>
 import { ref, computed } from 'vue';
 
 // 用户输入的消息
 const bulletchatList = ref([
-        { title: '2222' },
-        { title: '王五5' },
-        { title: '李四' },
-        { title: '张三' },
+        { title: '2222', avatarUrl: 'https://gd-hbimg.huaban.com/f5db4d4c158891d6528908eb18f04463533a6cb815a5a-wbQMDN_fw240webp' },
+        { title: '王五5', avatarUrl: 'https://gd-hbimg.huaban.com/f5db4d4c158891d6528908eb18f04463533a6cb815a5a-wbQMDN_fw240webp' },
+        { title: '李四', avatarUrl: 'https://gd-hbimg.huaban.com/f5db4d4c158891d6528908eb18f04463533a6cb815a5a-wbQMDN_fw240webp' },
+        { title: '张三', avatarUrl: 'https://gd-hbimg.huaban.com/f5db4d4c158891d6528908eb18f04463533a6cb815a5a-wbQMDN_fw240webp' },
 ]);
 
 // 新消息
@@ -42,8 +43,10 @@ const addMessage = () => {
 };
 
 // 计算每个消息的位置
-const calculatePosition = (index: number) => {
-        return 50 + index * 30; // 基准位置为 50%，每个消息间隔 30px
+const calculatePosition = () => {
+        const windowHeight = window.innerHeight;
+        const randomPosition = Math.random() * (windowHeight - 60); // 减去输入框的高度
+        return randomPosition;
 };
 </script>
 <style lang="scss" scoped>
@@ -60,7 +63,7 @@ const calculatePosition = (index: number) => {
 .bulletchat {
         width: 100%;
         height: 100vh;
-        background-image: url('../../assets/Navigation-bar-icon/bg.jpg');
+        background-image: url('../../assets/Navigation-bar-icon/弹幕背景.jpg');
         background-size: cover;
         background-position: center;
         position: relative;
@@ -82,13 +85,23 @@ const calculatePosition = (index: number) => {
                         padding: 8px 12px;
                         border-radius: 15px;
                         animation: moveLeft linear forwards;
+                        height: 25px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: space-around;
+
+                        .avatar {
+                                width: 20px;
+                                height: 20px;
+                                border-radius: 50%;
+                        }
                 }
         }
 
         .input-box {
-                width: 300px;
-                height: 100px;
-                border: 1px solid rgba(255, 255, 255, 0.8);
+                width: 400px;
+                height: 150px;
+
                 border-radius: 10px;
                 position: absolute;
                 box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -99,8 +112,10 @@ const calculatePosition = (index: number) => {
                 padding: 20px;
                 box-sizing: border-box;
                 left: 50%;
-                bottom: 20px;
-                transform: translateX(-50%);
+                top: 50%;
+                transform: translate(-50%, -50%);
+
+
 
                 .title {
                         font-size: 18px;
@@ -111,16 +126,17 @@ const calculatePosition = (index: number) => {
 
                 .custom-input {
                         width: 100%;
-                        height: 40px;
-                        border: 1px solid rgba(255, 255, 255, 0.8);
+                        height: 50px;
+                        border: 1px solid rgba(36, 34, 34, 0.8);
                         border-radius: 5px;
                         padding: 10px;
                         box-sizing: border-box;
                         font-size: 16px;
                         color: #fff;
-                        background-color: rgba(255, 255, 255, 0.8);
+
                         outline: none;
                         transition: border-color 0.3s ease;
+
 
                         &:focus {
                                 border-color: #409eff;
@@ -129,6 +145,39 @@ const calculatePosition = (index: number) => {
                         &::placeholder {
                                 color: rgba(255, 255, 255, 0.8);
                         }
+                }
+
+                ::v-deep(.el-input) {
+
+                        // 使用 ::v-deep 深入子组件
+                        .el-input__prefix {
+                                .el-input__prefix-inner {
+                                        background-color: rgba(0, 0, 0, 0.3);
+                                        font-size: 20px;
+                                }
+                        }
+
+                        .el-input__wrapper {
+                                padding: 0;
+                                background-color: rgba(255, 255, 255, 0);
+
+                                .el-input__inner {
+                                        // 直接作用于 input 元素
+                                        background-color: rgba(0, 0, 0, 0.3);
+                                        width: 100%;
+
+
+                                        height: 30px;
+                                        text-align: center;
+                                        color: white; // 可以设置文字颜色
+
+                                        &::placeholder {
+                                                // 设置 placeholder 颜色
+                                                color: rgba(255, 255, 255, 0.5);
+                                        }
+                                }
+                        }
+
                 }
         }
 }

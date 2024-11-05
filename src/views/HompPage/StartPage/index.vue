@@ -124,7 +124,7 @@ const closebox = () => {
     width: 100%;
     height: 100vh;
     background-size: cover;
-    background-image: url('../../../assets/Navigation-bar-icon/bg1.jpg');
+    background-image: url('../../../assets/Navigation-bar-icon/弹幕背景.jpg');
     background-position: center;
     padding-top: 80px;
     position: relative;

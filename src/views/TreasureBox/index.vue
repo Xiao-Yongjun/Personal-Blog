@@ -1,8 +1,8 @@
 <template>
-        百宝箱
+        <router-view></router-view>
 </template>
     
-<script setup lang='ts'>
+<script setup>
     
 </script>
     

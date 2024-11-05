@@ -20,8 +20,8 @@
                   <el-dropdown-menu>
                     <el-dropdown-item @click="$router.push({ path: '/homepage/startpage' })">开始页面</el-dropdown-item>
                     <el-dropdown-item @click="$router.push({ path: '/homepage/specialColumn' })">专栏</el-dropdown-item>
-                    <el-dropdown-item @click="$router.push({path:'/homepage/content'})">内容</el-dropdown-item>
-                    <el-dropdown-item @click="$router.push({path:'/homepage/blog'})">博客</el-dropdown-item>
+                    <el-dropdown-item @click="$router.push({ path: '/homepage/content' })">内容</el-dropdown-item>
+                    <el-dropdown-item @click="$router.push({ path: '/homepage/blog' })">博客</el-dropdown-item>
                   </el-dropdown-menu>
                 </template>
               </el-dropdown>
@@ -48,9 +48,23 @@
             <div class="text">相册</div>
             <div class="progress-border"></div>
           </div>
-          <div class="item" @click="$router.push({ path: '/treasureBox' })">
+          <div class="item" @click="$router.push({ path: '/treasureBox/AlbumCollection' })">
             <img src="../src/assets/Navigation-bar-icon/百宝箱-copy.png" alt="" class="img">
-            <div class="text">百宝箱</div>
+            <div class="text">
+              <el-dropdown>
+                <span class="el-dropdown-link">
+                  百宝箱
+                </span>
+                <template #dropdown>
+                  <el-dropdown-menu>
+                    <el-dropdown-item @click="$router.push({ path: '/treasureBox/AlbumCollection' })">相册</el-dropdown-item>
+                    <el-dropdown-item @click="$router.push({ path: '/treasureBox/music' })">音乐</el-dropdown-item>
+                    <el-dropdown-item @click="$router.push({ path: '/homepage/content' })">内容</el-dropdown-item>
+                    <el-dropdown-item @click="$router.push({ path: '/homepage/blog' })">博客</el-dropdown-item>
+                  </el-dropdown-menu>
+                </template>
+              </el-dropdown>
+            </div>
             <div class="progress-border"></div>
           </div>
           <div class="item" @click="$router.push({ path: '/message' })">

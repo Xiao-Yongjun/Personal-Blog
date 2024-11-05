@@ -12,6 +12,8 @@ import message from "../views/Message/index.vue";
 import specialColumn from "../views/HompPage/specialColumn/index.vue";
 import content from "../views/HompPage/content/index.vue";
 import Blog from "../views/HompPage/Blog/index.vue";
+import AlbumCollection from "../views/TreasureBox/AlbumCollection/index.vue";
+import Music from "../views/TreasureBox/Music/index.vue";
 const router = createRouter({
 	//路由的模式的设置
 	history: createWebHistory(),
@@ -40,7 +42,7 @@ const router = createRouter({
 					path: "content",
 					component: content,
 				},
-                {
+				{
 					path: "blog",
 					component: Blog,
 				},
@@ -76,6 +78,16 @@ const router = createRouter({
 			meta: {
 				title: "百宝箱",
 			},
+			children: [
+				{
+					path: "AlbumCollection",
+					component: AlbumCollection,
+				},
+				{
+					path:'music',
+					component:Music,
+				},
+			],
 		},
 		{
 			path: "/record",
