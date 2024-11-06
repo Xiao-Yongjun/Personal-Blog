@@ -14,6 +14,9 @@ import content from "../views/HompPage/content/index.vue";
 import Blog from "../views/HompPage/Blog/index.vue";
 import AlbumCollection from "../views/TreasureBox/AlbumCollection/index.vue";
 import Music from "../views/TreasureBox/Music/index.vue";
+import Favorites from "../views/TreasureBox/Favorites/index.vue";
+import FriendshipLink from "../views/TreasureBox/FriendshipLink/index.vue";
+import Login from "../views/Login/index.vue";
 const router = createRouter({
 	//路由的模式的设置
 	history: createWebHistory(),
@@ -25,6 +28,10 @@ const router = createRouter({
 			meta: {
 				title: "家",
 			},
+		},
+		{
+			path: "/login",
+			component: Login,
 		},
 		{
 			path: "/homepage",
@@ -84,8 +91,16 @@ const router = createRouter({
 					component: AlbumCollection,
 				},
 				{
-					path:'music',
-					component:Music,
+					path: "music",
+					component: Music,
+				},
+				{
+					path: "favorites",
+					component: Favorites,
+				},
+				{
+					path: "friendshipLink",
+					component: FriendshipLink,
 				},
 			],
 		},

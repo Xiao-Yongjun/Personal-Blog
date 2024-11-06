@@ -25,13 +25,14 @@
                 </div>
             </div>
         </div>
+        <Foot />
     </div>
 </template>
 
 <script setup>
 import treauseCard from '../../../components/treauseCard/index.vue'
 import { ref, onMounted } from 'vue';
-
+import Foot from '../../../components/Foot/index.vue'
 // 创建一个响应式对象来保存所有的音频元素引用
 const audioRefs = ref({});
 
@@ -80,7 +81,7 @@ onMounted(() => {
 
             .item-content {
                 width: 100%;
-                background-color: rgb(158, 199, 244,0.5);
+                background-color: rgb(158, 199, 244, 0.5);
 
                 .content-title {
                     width: 100%;
@@ -88,6 +89,8 @@ onMounted(() => {
                     line-height: 35px;
                     color: rgba(164, 184, 220, 0.8);
                     padding-left: 50px;
+                    background-color: rgba(164, 184, 220, 0.8);
+                    font-size: 20px;
                 }
 
                 .item-content-div {
@@ -98,7 +101,7 @@ onMounted(() => {
 
                     .item {
                         height: 150px;
-                        
+
 
                         .plc {
                             width: 100px;

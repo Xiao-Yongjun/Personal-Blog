@@ -57,10 +57,12 @@
                 </span>
                 <template #dropdown>
                   <el-dropdown-menu>
-                    <el-dropdown-item @click="$router.push({ path: '/treasureBox/AlbumCollection' })">相册</el-dropdown-item>
+                    <el-dropdown-item
+                      @click="$router.push({ path: '/treasureBox/AlbumCollection' })">相册</el-dropdown-item>
                     <el-dropdown-item @click="$router.push({ path: '/treasureBox/music' })">音乐</el-dropdown-item>
-                    <el-dropdown-item @click="$router.push({ path: '/homepage/content' })">内容</el-dropdown-item>
-                    <el-dropdown-item @click="$router.push({ path: '/homepage/blog' })">博客</el-dropdown-item>
+                    <el-dropdown-item @click="$router.push({ path: '/treasureBox/favorites' })">收藏夹</el-dropdown-item>
+                    <el-dropdown-item
+                      @click="$router.push({ path: '/treasureBox/friendshipLink' })">友情链接</el-dropdown-item>
                   </el-dropdown-menu>
                 </template>
               </el-dropdown>
@@ -77,7 +79,7 @@
             <div class="text">联系我</div>
             <div class="progress-border"></div>
           </div>
-          <div class="login">
+          <div class="login" @click="$router.push({path:'/Login'})">
             登录
           </div>
         </div>
