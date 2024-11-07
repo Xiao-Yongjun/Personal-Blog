@@ -1,5 +1,5 @@
 <template>
-    <div class="startpage">
+    <div class="startpage" :style="{ backgroundImage: `url(${backgroundImage})` }">
         <div class="time">
             <div class="hour">
                 {{ time.hours }}
@@ -27,7 +27,7 @@
         <transition :name="open ? 'slide-up' : 'slide-down'" appear>
             <div class="shade" v-if="open">
                 <div class="box">
-                    <div class="closebox" @click="closebox">返回</div>
+                    <div class="closebox" @click="closebox" >返回</div>
                     <div class="search">
                         <div class="text">搜索</div>
                         <el-input placeholder="输入搜索内容"></el-input>
@@ -43,9 +43,9 @@
                         </div>
                     </div>
                     <div class="content">
-                        <div class="item" v-for="item in 20" :key="item">
-                            <img src="../../../assets/Navigation-bar-icon/bg1.jpg" alt="" class="plc">
-                            <div class="title">我的房东阿姨</div>
+                        <div class="item" v-for="item in 25" :key="item">
+                            <img src="../../../assets/Navigation-bar-icon/bg4.png" alt="" class="plc">
+                            <div class="title">健康生活指南</div>
                         </div>
                     </div>
                 </div>
@@ -54,19 +54,32 @@
         </transition>
     </div>
 </template>
-
 <script setup>
-import { ref } from 'vue';
-import { formatDateTime } from '../../../utils/time'
-let time = ref(formatDateTime(Date.now()))
-import { Search } from '@element-plus/icons-vue'
-const open = ref(false)
+import { ref, computed, onMounted } from 'vue';
+import { formatDateTime } from '../../../utils/time';
+import { Search } from '@element-plus/icons-vue';
+
+let time = ref(formatDateTime(Date.now()));
+const open = ref(false);
+
 const openbox = () => {
-    open.value = true
-}
+    open.value = true;
+};
+
 const closebox = () => {
-    open.value = false
-}
+    open.value = false;
+};
+
+const startbg = ref([
+    { url: '/src/assets/Navigation-bar-icon/startbg1.jpg' },
+    { url: '/src/assets/Navigation-bar-icon/startbg2.jpg' },
+    { url: '/src/assets/Navigation-bar-icon/startbg3.jpg' },
+]);
+
+const backgroundImage = computed(() => {
+    const randomIndex = Math.floor(Math.random() * startbg.value.length);
+    return startbg.value[randomIndex].url;
+});
 </script>
 
 
@@ -120,11 +133,19 @@ const closebox = () => {
     }
 }
 
+@keyframes glow {
+  0%, 100% {
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 10px rgb(247, 167, 167);
+  }
+}
 .startpage {
     width: 100%;
     height: 100vh;
     background-size: cover;
-    background-image: url('../../../assets/Navigation-bar-icon/弹幕背景.jpg');
+    background-image: url('../../../assets/Navigation-bar-icon/startbg3.jpg');
     background-position: center;
     padding-top: 80px;
     position: relative;
@@ -134,7 +155,7 @@ const closebox = () => {
         top: 0;
         width: 100%;
         height: 100%;
-        background-color: rgba(0, 0, 0, 0.25);
+        background-color: rgba(0, 0, 0, 0.1);
         z-index: 3301;
         padding-top: 100px;
 
@@ -154,7 +175,7 @@ const closebox = () => {
                 line-height: 30px;
                 font-size: 15px;
                 border-radius: 20px;
-                animation: fadeInOut 2s infinite;
+                animation: fadeInOut 2s infinite, glow 3s infinite;;
             }
 
             .search {
@@ -222,11 +243,11 @@ const closebox = () => {
                 width: 900px;
                 border-radius: 8px;
                 margin: auto;
-                background-color: rgba(199, 135, 135, 0.4);
+                background-color: rgba(255, 255, 255, 0.4);
                 padding-top: 5px;
                 display: flex;
                 flex-wrap: wrap;
-
+              
                 .item {
                     width: 70px;
                     margin: 10px;

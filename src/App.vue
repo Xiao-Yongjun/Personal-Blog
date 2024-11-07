@@ -1,98 +1,12 @@
 <template>
-  <div class="navitor" :class="{ 'hidden': isHidden }">
-    <el-row style="width: 100%;">
-      <el-col :span="12">
-        <div class="logo">
-          <img src="../src/assets/Navigation-bar-icon/我的博客 (1).png" alt="">
-        </div>
-      </el-col>
-      <el-col :span="12" style="padding-left: 85px;">
-        <div class="grid-content ep-bg-purple-light" />
-        <div class="right-navator">
-          <div class="item" @click="$router.push({ path: '/homepage/startpage' })">
-            <img src="../src/assets/Navigation-bar-icon/首页.png" alt="" class="img">
-            <div class="text">
-              <el-dropdown>
-                <span class="el-dropdown-link">
-                  首页
-                </span>
-                <template #dropdown>
-                  <el-dropdown-menu>
-                    <el-dropdown-item @click="$router.push({ path: '/homepage/startpage' })">开始页面</el-dropdown-item>
-                    <el-dropdown-item @click="$router.push({ path: '/homepage/specialColumn' })">专栏</el-dropdown-item>
-                    <el-dropdown-item @click="$router.push({ path: '/homepage/content' })">内容</el-dropdown-item>
-                    <el-dropdown-item @click="$router.push({ path: '/homepage/blog' })">博客</el-dropdown-item>
-                  </el-dropdown-menu>
-                </template>
-              </el-dropdown>
-            </div>
-            <div class="progress-border"></div>
-          </div>
-          <div class="item" @click="$router.push({ path: '/home' })">
-            <img src="../src/assets/Navigation-bar-icon/爱心.png" alt="" class="img">
-            <div class="text">家</div>
-            <div class="progress-border"></div>
-          </div>
-          <div class="item" @click="$router.push({ path: '/informalessay' })">
-            <img src="../src/assets/Navigation-bar-icon/menu-心情随笔.png" alt="" class="img">
-            <div class="text">随笔</div>
-            <div class="progress-border"></div>
-          </div>
-          <div class="item" @click="$router.push({ path: '/record' })">
-            <img src="../src/assets/Navigation-bar-icon/记录.png" alt="" class="img">
-            <div class="text">记录</div>
-            <div class="progress-border"></div>
-          </div>
-          <div class="item" @click="$router.push({ path: '/album' })">
-            <img src="../src/assets/Navigation-bar-icon/相册.png" alt="" class="img">
-            <div class="text">相册</div>
-            <div class="progress-border"></div>
-          </div>
-          <div class="item" @click="$router.push({ path: '/treasureBox/AlbumCollection' })">
-            <img src="../src/assets/Navigation-bar-icon/百宝箱-copy.png" alt="" class="img">
-            <div class="text">
-              <el-dropdown>
-                <span class="el-dropdown-link">
-                  百宝箱
-                </span>
-                <template #dropdown>
-                  <el-dropdown-menu>
-                    <el-dropdown-item
-                      @click="$router.push({ path: '/treasureBox/AlbumCollection' })">相册</el-dropdown-item>
-                    <el-dropdown-item @click="$router.push({ path: '/treasureBox/music' })">音乐</el-dropdown-item>
-                    <el-dropdown-item @click="$router.push({ path: '/treasureBox/favorites' })">收藏夹</el-dropdown-item>
-                    <el-dropdown-item
-                      @click="$router.push({ path: '/treasureBox/friendshipLink' })">友情链接</el-dropdown-item>
-                  </el-dropdown-menu>
-                </template>
-              </el-dropdown>
-            </div>
-            <div class="progress-border"></div>
-          </div>
-          <div class="item" @click="$router.push({ path: '/message' })">
-            <img src="../src/assets/Navigation-bar-icon/留言板.png" alt="" class="img">
-            <div class="text">留言</div>
-            <div class="progress-border"></div>
-          </div>
-          <div class="item" @click="$router.push({ path: '/contact' })">
-            <img src="../src/assets/Navigation-bar-icon/联系我-2.png" alt="" class="img">
-            <div class="text">联系我</div>
-            <div class="progress-border"></div>
-          </div>
-          <div class="login" @click="$router.push({path:'/Login'})">
-            登录
-          </div>
-        </div>
-      </el-col>
-    </el-row>
-  </div>
+ <Header/>
   <router-view />
 </template>
 
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
-
+import Header from './components/Header/index.vue'
 const $router = useRouter();
 const isHidden = ref(false);
 let lastScrollY = 0;
@@ -129,7 +43,7 @@ onUnmounted(() => {
 
   .logo {
     width: 100%;
-    height: 80px;
+    height: 60px;
     display: flex;
     align-items: center;
     padding-left: 40px;
@@ -137,7 +51,7 @@ onUnmounted(() => {
 
   .right-navator {
     width: 100%;
-    height: 80px;
+    height: 60px;
     display: flex;
     align-items: center;
 
@@ -157,7 +71,7 @@ onUnmounted(() => {
       display: flex;
       position: relative;
       cursor: pointer;
-      height: 80px;
+      height: 50px;
       align-items: center;
 
       .progress-border {

@@ -35,12 +35,12 @@
                                                         </div>
                                                 </div>
                                         </div>
-<Messagebox/>
+                                        <Messagebox />
                                 </div>
                         </div>
                 </div>
         </div>
-        <Foot/>
+        <Foot />
 </template>
 
 <script setup>
@@ -51,10 +51,11 @@ import Foot from '../../components/Foot/index.vue'
 <style lang="scss" scoped>
 .informal {
         width: 100%;
-        padding: 20px;
+        
         /* 添加外边距 */
         box-sizing: border-box;
-background-color:rgba(0, 0, 0, 0.1);
+        background-color: rgba(0, 0, 0, 0.1);
+
         .informal_head {
                 height: 300px;
                 width: 100%;

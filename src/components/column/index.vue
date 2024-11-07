@@ -1,18 +1,20 @@
 <template>
         <div class="column">
             <div class="title">
-            这是标题
+            {{ props.part.title}}
         </div>
         <div class="content">
-            <div class="item" v-for="item in 4" :key="item">
-                <img src="../../assets/Navigation-bar-icon/bg1.jpg" alt="">
+            <div class="item" v-for="item in props.part.data" :key="item.url">
+                <img :src="item.url" alt="">
             </div>
         </div>
         </div>
 </template>
     
-<script setup lang='ts'>
-    
+<script setup >
+ let props=defineProps(['part'])   
+
+ 
 </script>
     
 <style lang="scss" scoped>
