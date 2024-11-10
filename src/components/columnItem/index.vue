@@ -2,7 +2,7 @@
     <div class="column">
       <div class="column-pic-div">
         <div class="pic">
-          <img src="../../assets/Navigation-bar-icon/bg.jpg" alt="">
+          <img src="../../assets/Navigation-bar-icon/login.jpg" alt="">
         </div>
       </div>
       <div class="column-content">

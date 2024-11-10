@@ -149,8 +149,20 @@ onUnmounted(() => {
 </script>
 
 <style scoped lang="scss">
+@keyframes glow {
+  0% {
+    box-shadow: 0 0 20px rgba(255, 204, 0, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(255, 204, 0, 1);
+  }
+  100% {
+    box-shadow: 0 0 20px rgba(255, 204, 0, 0.5);
+  }
+}
 .navitor {
     position: fixed;
+    font-family: 'MyCustomFont', sans-serif;
     top: 0;
     z-index: 1000;
     background-color: rgba(0, 0, 0, 0.1);
@@ -190,6 +202,7 @@ onUnmounted(() => {
             text-align: center;
             align-items: center;
             font-size: 16px;
+            animation: glow 3s infinite;
         }
 
         .item {

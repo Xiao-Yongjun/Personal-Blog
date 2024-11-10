@@ -1,51 +1,67 @@
 <template>
         <div class="informal">
-                <div class="informal_head">
-                        <div class="title">
-                                <img src="../../assets/Navigation-bar-icon/爱心.png" alt="">
-                                <span>这是随笔</span>
-                        </div>
-                        <div class="slogn">
-                                随心所欲，发表意见
-                        </div>
+          <div class="informal_head">
+            <div class="title">
+              <img src="../../assets/Navigation-bar-icon/爱心.png" alt="">
+              <span>这是随笔</span>
+            </div>
+            <div class="slogn">
+              随心所欲，发表意见
+            </div>
+          </div>
+          <div class="informal_content-div">
+            <div class="informal_content">
+              <div class="content-item" v-for="(item, index) in items" :key="index">
+                <div class="item-top">
+                  <div class="content-left">
+                    <img src="../../assets/Navigation-bar-icon/bg1.jpg" alt="">
+                  </div>
+                  <div class="content-right">
+                    <div class="right-top">
+                      <img src="../../assets/Navigation-bar-icon/留言板.png" alt="">
+                      这是名字
+                    </div>
+                    <div class="right-center">
+                      {{ item.content }}
+                    </div>
+                    <div class="right-right">
+                      <div class="date">2022-12-02</div>
+                      <div class="pic">
+                        <img src="../../assets/Navigation-bar-icon/留言板.png" alt="" @click="toggleComments(index)">
+                        <div class="count">1</div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-                <div class="informal_content-div">
-                        <div class="informal_content">
-                                <div class="content-item" v-for="item in 6" :key="item">
-                                        <div class="item-top">
-                                                <div class="content-left">
-                                                        <img src="../../assets/Navigation-bar-icon/bg1.jpg" alt="">
-                                                </div>
-                                                <div class="content-right">
-                                                        <div class="right-top">
-                                                                <img src="../../assets/Navigation-bar-icon/留言板.png"
-                                                                        alt="">
-                                                                这是名字
-                                                        </div>
-                                                        <div class="right-center">
-                                                                这个是我的标题哈哈哈哈
-                                                        </div>
-                                                        <div class="right-right">
-                                                                <div class="date">2022-12-02</div>
-                                                                <div class="pic">
-                                                                        <img src="../../assets/Navigation-bar-icon/留言板.png"
-                                                                                alt="">
-                                                                        <div class="count">1</div>
-                                                                </div>
-                                                        </div>
-                                                </div>
-                                        </div>
-                                        <Messagebox />
-                                </div>
-                        </div>
-                </div>
+                <Messagebox v-if="comments[index]" />
+              </div>
+            </div>
+          </div>
         </div>
         <Foot />
-</template>
-
+      </template>
 <script setup>
 import Messagebox from '../../components/Messagebox/index.vue'
 import Foot from '../../components/Foot/index.vue'
+import { ref } from 'vue';
+
+// 初始化评论列表
+const items = ref([
+  { id: 1, content: '这是第一条评论' },
+  { id: 2, content: '这是第二条评论' },
+  { id: 3, content: '这是第三条评论' },
+  { id: 4, content: '这是第四条评论' },
+  { id: 5, content: '这是第五条评论' },
+  { id: 6, content: '这是第六条评论' }
+]);
+
+// 初始化评论显示状态
+const comments = ref({});
+
+// 切换评论显示状态
+const toggleComments = (index) => {
+  comments.value[index] = !comments.value[index];
+};
 </script>
 
 <style lang="scss" scoped>
@@ -54,8 +70,8 @@ import Foot from '../../components/Foot/index.vue'
         
         /* 添加外边距 */
         box-sizing: border-box;
-        background-color: rgba(0, 0, 0, 0.1);
-
+        background-color: rgba(255, 255, 255, 0.1);
+        font-family: 'MyCustomFont', sans-serif;
         .informal_head {
                 height: 300px;
                 width: 100%;
@@ -63,7 +79,7 @@ import Foot from '../../components/Foot/index.vue'
                 justify-content: center;
                 align-items: center;
                 flex-direction: column;
-                background-image: url('../../assets/Navigation-bar-icon/bg3.jpg');
+                background-image: url('../../assets/Navigation-bar-icon/informalessay.jpg');
                 background-position: center;
                 background-size: cover;
                 /* 背景图适应容器 */
@@ -76,12 +92,18 @@ import Foot from '../../components/Foot/index.vue'
                         height: 40px;
                         line-height: 40px;
                         text-align: center;
-                        background-color: rgba(0, 0, 0, 0.5);
+                        display: flex;
+                        align-items: center;
+                        justify-content:center;
+                      
                         /* 半透明背景色 */
                         padding: 10px;
                         border-radius: 5px;
                         margin: 10px 0;
                         /* 上下边距 */
+                }
+                .title{
+                        font-size: 35px;
                 }
         }
 

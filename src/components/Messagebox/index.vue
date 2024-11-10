@@ -3,7 +3,7 @@
         <div class="text">留言</div>
         <div class="textarea">
             <el-input v-model="textarea" style="height: 100%; height: 100%;" :rows="2" type="textarea"
-                placeholder="搜索内容" />
+                placeholder="输入内容" />
         </div>
         <div class="text-bottom">
             <div class="bottom-left">
@@ -11,7 +11,7 @@
                 <img src="../../assets/Navigation-bar-icon/menu-心情随笔.png" alt="">
             </div>
             <div class="bottom-right">
-                <el-button type="success" round>Success</el-button>
+                <el-button type="success" round>提交</el-button>
             </div>
         </div>
     </div>

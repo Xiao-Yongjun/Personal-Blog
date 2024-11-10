@@ -1,5 +1,6 @@
 <template>
- <Header/>
+
+  <Header />
   <router-view />
 </template>
 
@@ -32,7 +33,11 @@ onUnmounted(() => {
 });
 </script>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
+/* styles.css 或者入口组件的 <style> 标签 */
+body,div{
+  font-family: 'MyCustomFont', sans-serif;
+}
 .navitor {
   position: fixed;
   top: 0;

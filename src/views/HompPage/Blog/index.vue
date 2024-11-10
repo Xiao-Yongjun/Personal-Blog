@@ -17,7 +17,7 @@
                 <el-col :span="8">
                     <el-card class="self-introduction">
                         <div class="pic">
-                            <img src="../../../assets/Navigation-bar-icon/bg.jpg" alt="">
+                            <img src="../../../assets/Navigation-bar-icon/bg4.png" alt="">
                         </div>
                         <div class="polize">polize</div>
                         <div class="item-content">
@@ -104,33 +104,33 @@
                         </div>
                     </div>
                 </el-col>
-                <el-col :span="16" >
+                <el-col :span="16">
                     <div class="advertisement">
                         <el-icon>
                             <View />
                         </el-icon>
                         <div class="text">欢迎来到我的网站:www.xiao/yongjun </div>
                     </div>
-                   <div v-for="item in 5" :key="item">
-                    <titleBar :title=title>
-                        <template #icon>
-                            <div>
-                                <el-icon>
-                                    <Menu />
-                                </el-icon>
-                            </div>
-                        </template>
-                    </titleBar>
-                    <div class="left_content">
-                        <columnItem v-for="item in 6" :key="item" />
+                    <div v-for="item in 5" :key="item">
+                        <titleBar :title=title>
+                            <template #icon>
+                                <div>
+                                    <el-icon>
+                                        <Menu />
+                                    </el-icon>
+                                </div>
+                            </template>
+                        </titleBar>
+                        <div class="left_content">
+                            <columnItem v-for="item in 6" :key="item" />
+                        </div>
                     </div>
-                   </div>
 
                 </el-col>
             </el-row>
         </div>
     </div>
-<Foot/>
+    <Foot />
 </template>
 
 <script setup>
@@ -198,13 +198,28 @@ import columnItem from '../../../components/columnItem/index.vue'
     }
 }
 
+@keyframes glow {
+    0% {
+        box-shadow: 0px 0px 15px rgba(255, 255, 255, 0.6);
+    }
+
+    50% {
+        box-shadow: 0px 0px 10px rgba(255, 143, 143, 0.7);
+    }
+
+    100% {
+        box-shadow: 0px 0px 15px rgba(255, 143, 143, 0.8);
+    }
+}
+
 .blog {
     width: 100%;
     position: relative;
+    font-family: 'MyCustomFont', sans-serif;
 
     .blog-head {
         width: 100%;
-        background-image: url('../../../assets/Navigation-bar-icon/bg1.jpg');
+        background-image: url('../../../assets/Navigation-bar-icon/startbg2.jpg');
         background-position: center;
         background-size: cover;
         background-repeat: no-repeat;
@@ -216,7 +231,7 @@ import columnItem from '../../../components/columnItem/index.vue'
         .head-content-div {
             width: 500px;
             height: 250px;
-            border: 1px solid green;
+
 
             .title {
                 width: 100%;
@@ -264,7 +279,7 @@ import columnItem from '../../../components/columnItem/index.vue'
 
     .blog-content {
         width: 100%;
-       
+
         top: 400px;
         background-color: rgba(245, 245, 245, 0.5);
 
@@ -282,10 +297,18 @@ import columnItem from '../../../components/columnItem/index.vue'
                     overflow: hidden;
                     border-radius: 50%;
                     margin: auto;
+                    animation: glow 2s infinite;
 
                     img {
                         width: 100%;
                         height: 100%;
+                    }
+
+                    &:hover {
+                        transform: rotate(360deg);
+                        /* 使用 rotate 函数 */
+                        transition: transform 0.5s ease;
+                        /* 添加过渡效果 */
                     }
                 }
 
@@ -481,7 +504,7 @@ import columnItem from '../../../components/columnItem/index.vue'
             .Treehole {
                 width: 100%;
                 padding: 10px;
-                background-image: url('../../../assets/Navigation-bar-icon/bg.jpg');
+                background-image: url('../../../assets/Navigation-bar-icon/startbg2.jpg');
                 background-position: center;
                 border-radius: 10px;
 
@@ -495,7 +518,7 @@ import columnItem from '../../../components/columnItem/index.vue'
                 .treehole-content {
                     width: 100%;
                     height: 400px;
-                    border: 1px solid black;
+                
 
                     .item {
                         width: 90%;
@@ -521,7 +544,7 @@ import columnItem from '../../../components/columnItem/index.vue'
                             width: 50%;
                             height: 50px;
                             line-height: 50px;
-                            border: 1px solid pink;
+                         
                         }
                     }
                 }

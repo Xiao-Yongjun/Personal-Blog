@@ -1,24 +1,30 @@
 <template>
-        <div class="home">
+        <div class="home" @click=" playMusic()">
                 <div class="home_head">
                         <div class="head-content">
                                 <div class="content-item">
                                         <div class="content-item-div">
                                                 <div class="plc">
-                                                        <img src="../../assets/Navigation-bar-icon/bg.jpg" alt="">
+                                                        <img src="../../assets/Navigation-bar-icon/man.png" alt="">
                                                 </div>
                                                 <div class="name">张三</div>
                                         </div>
                                         <div class="content-item-div">
-                                                <div class="plc">
-                                                        <img src="../../assets/Navigation-bar-icon/爱心 (1).png" alt=""
-                                                                style="animation: glow 3s infinite;">
+                                                <div class="plc expand">
+                                                        <img src="../../assets/Navigation-bar-icon/爱心 (1).png" alt="">
+                                                        <audio ref="audioPlayer">
+                                                                <source src="../../assets/vedio/heart.mp3"
+                                                                        type="audio/mpeg">
+                                                                <source src="../../assets/vedio/heart.ogg"
+                                                                        type="audio/ogg">
+                                                                Your browser does not support the audio element.
+                                                        </audio>
                                                 </div>
 
                                         </div>
                                         <div class="content-item-div">
                                                 <div class="plc">
-                                                        <img src="../../assets/Navigation-bar-icon/bg.jpg" alt="">
+                                                        <img src="../../assets/Navigation-bar-icon/woman.gif" alt="">
                                                 </div>
                                                 <div class="name">张三</div>
                                         </div>
@@ -55,19 +61,39 @@
                                 </div>
                                 <div class="Selectcontent">
                                         <div class="choiceitem-div">
-                                                <div class="choiceItem" v-for="item in 3" :key="item">
+                                                <div class="choiceItem" @click="changeitem=1" >
                                                         <div class="item-left">
-                                                                <img src="../../assets/Navigation-bar-icon/bg.jpg"
+                                                                <img src="../../assets/Navigation-bar-icon/startbg2.jpg"
                                                                         alt="">
                                                         </div>
                                                         <div class="item-right">
-                                                                <div class="title">相册</div>
+                                                                <div class="title">点点滴滴</div>
+                                                                <div class="slogn">今朝有酒今朝醉</div>
+                                                        </div>
+                                                </div>
+                                                <div class="choiceItem" @click="changeitem=2" >
+                                                        <div class="item-left">
+                                                                <img src="../../assets/Navigation-bar-icon/startbg1.jpg"
+                                                                        alt="">
+                                                        </div>
+                                                        <div class="item-right">
+                                                                <div class="title">时光相册</div>
                                                                 <div class="slogn">记录美好的生活</div>
+                                                        </div>
+                                                </div>
+                                                <div class="choiceItem" @click="changeitem=3" >
+                                                        <div class="item-left">
+                                                                <img src="../../assets/Navigation-bar-icon/startbg3.jpg"
+                                                                        alt="">
+                                                        </div>
+                                                        <div class="item-right">
+                                                                <div class="title">祝福板</div>
+                                                                <div class="slogn">写下美好祝福</div>
                                                         </div>
                                                 </div>
 
                                         </div>
-                                        <div class="choiceItemContent" v-if="false">
+                                        <div class="choiceItemContent" v-if="changeitem==1">
                                                 <el-timeline style="max-width: 600px">
                                                         <el-timeline-item center timestamp="2018/4/12" placement="top">
                                                                 <el-card>
@@ -89,7 +115,7 @@
                                                         </el-timeline-item>
                                                 </el-timeline>
                                         </div>
-                                        <div class="choiceItemContent" v-if="false">
+                                        <div class="choiceItemContent" v-if="changeitem==2">
 
                                                 <div class="tags">
                                                         <div class="tags_item" v-for="item in 6" :key="item">
@@ -113,7 +139,7 @@
 
                                                 </div>
                                         </div>
-                                        <div class="choiceItemContent">
+                                        <div class="choiceItemContent" v-if="changeitem==3">
                                                 <Messagebox /><!-- 留言 -->
                                                 <div class="comments">
 
@@ -144,9 +170,11 @@
 <script setup>
 import { getTimeDifference } from '../../utils/time'
 import Messagebox from '../../components/Messagebox/index.vue'
-import { ref } from 'vue';
+import { ref, onMounted } from 'vue';
 const result = ref('');
 const newyearsTime = ref('');
+
+const changeitem=ref('1')
 setInterval(() => {
         result.value = getTimeDifference("2016-01-01T00:00:00")
         newyearsTime.value = getTimeDifference("2025-02-10T00:00:00")
@@ -182,6 +210,19 @@ const activities = [
         },
 ]
 import Foot from '../../components/Foot/index.vue'
+const audioPlayer = ref(null);
+
+// 定义播放音乐的方法
+const playMusic = () => {
+        audioPlayer.value.play().then(() => {
+                console.log('音乐已播放');
+        }).catch((error) => {
+                console.error('播放音乐时出错:', error);
+        });
+};
+onMounted(() => {
+
+})
 </script>
 
 <style scoped lang="scss">
@@ -211,14 +252,29 @@ import Foot from '../../components/Foot/index.vue'
         }
 }
 
+@keyframes expand {
+
+        0%,
+        100% {
+                transform: scale(1);
+        }
+
+        50% {
+                transform: scale(1.2);
+        }
+}
+
 .home {
         width: 100%;
+        font-family: 'MyCustomFont', sans-serif;
 
         .home_head {
                 width: 100%;
                 height: 500px;
 
-                background-image: url('../../assets/Navigation-bar-icon/bg.jpg');
+                background-image: url('../../assets/Navigation-bar-icon/爱.png');
+                background-position: center;
+                background-size: cover;
                 background-position: center;
                 display: flex;
                 justify-content: center;
@@ -251,7 +307,16 @@ import Foot from '../../components/Foot/index.vue'
                                                         width: 200px;
                                                         height: 200px;
                                                         border-radius: 50%;
+
+
                                                 }
+                                        }
+
+                                        .expand {
+                                                img {
+                                                        animation: expand 5s infinite;
+                                                }
+
                                         }
 
                                         .name {
@@ -271,7 +336,8 @@ import Foot from '../../components/Foot/index.vue'
 
                 width: 100%;
 
-                background-image: url('../../assets/Navigation-bar-icon/bg3.jpg');
+                background-image: url('../../assets/Navigation-bar-icon/blackbg.jpg');
+                background-size: cover;
 
                 /* 网格大小 */
                 .content-div {
@@ -336,10 +402,11 @@ import Foot from '../../components/Foot/index.vue'
                                 width: 400px;
                                 height: 200px;
                                 border-radius: 10px;
+                                border: 2px solid rgba(255, 126, 95, 0.5);
                                 margin: auto;
                                 margin-top: 30px;
                                 margin-bottom: 40px;
-                                background-image: url('../../assets/Navigation-bar-icon/bg1.jpg');
+                                background-image: url('../../assets/Navigation-bar-icon/startbg1.jpg');
                                 background-position: center;
                                 display: flex;
 
@@ -348,7 +415,7 @@ import Foot from '../../components/Foot/index.vue'
                                         height: 100%;
                                         line-height: 200px;
                                         font-size: 40px;
-                                        color: aliceblue;
+                                        color: rgba(255, 126, 95, 0.5);
                                 }
 
                                 .card {
@@ -369,22 +436,40 @@ import Foot from '../../components/Foot/index.vue'
                                         gap: 10px;
 
                                         .choiceItem {
-                                                height: 100px;
+                                                height: 120px;
                                                 background-color: rgba(255, 255, 255, 1);
-                                                box-shadow: 0px 0px 10px rgba(255, 126, 95, 0.5);
+                                                box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.5);
                                                 border-radius: 10px;
                                                 display: flex;
 
                                                 .item-left {
                                                         width: 50%;
-                                                        height: 100px;
-                                                        text-align: center;
+                                                        height: 120px;
+                                                        display: flex;
+                                                        justify-content: center;
+                                                        align-items: center;
 
                                                         img {
                                                                 width: 100px;
-                                                                height: 100%;
+                                                                height: 100px;
                                                                 border-radius: 50%;
                                                                 overflow: hidden;
+                                                        }
+                                                }
+                                                .item-right{
+                                                        color: pink;
+                                                        width: 50%;
+                                            
+                                                        .slogn{
+                                                                color: rgba(0, 0, 0, 1);
+                                                                width: 100%;
+                                                                text-align: left;
+                                                                text-align: left;
+                                                        }.title{
+                                                                color: rgba(0, 0, 0, 1); 
+                                                                width: 100%;
+                                                                text-align: left;
+                                                                text-align: left;
                                                         }
                                                 }
                                         }
@@ -483,7 +568,7 @@ import Foot from '../../components/Foot/index.vue'
                                                         border-bottom: 1px dashed black;
                                                         height: 120px;
                                                         width: 100%;
-
+margin-top: 5px;
 
 
                                                         .item-left {
@@ -495,8 +580,9 @@ import Foot from '../../components/Foot/index.vue'
                                                                 bottom: 1px solid black;
 
                                                                 img {
-                                                                        width: 80px;
+                                                                        width:50px;
                                                                         height: 50px;
+                                                                        border-radius: 10px;
                                                                 }
                                                         }
 
@@ -524,7 +610,7 @@ import Foot from '../../components/Foot/index.vue'
                                                                         height: 50px;
 
                                                                         margin: auto;
-                                                                        background-color: rgba(0, 0, 0, 0.2);
+                                                                        background-color: rgba(0, 0, 0, 0.1);
                                                                         border-radius: 10px;
                                                                         text-align: center;
                                                                         line-height: 50px;

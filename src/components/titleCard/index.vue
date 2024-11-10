@@ -1,11 +1,14 @@
 <template>
     <div class="title-card">
-      <img src="../../assets/Navigation-bar-icon/bg.jpg" alt="" class="smallpic">
+      <img src="../../assets/Navigation-bar-icon/car.png" alt="" class="smallpic">
       <div class="title">标题</div>
+     
     </div>
   </template>
   
   <script setup>
+
+
   </script>
   
   <style lang="scss" scoped>
@@ -17,11 +20,12 @@
     border: 1px solid #e0e0e0; // 使用更淡的边框颜色
     display: flex;
     align-items: center; // 保持垂直居中对齐
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); // 减轻阴影效果，使其看起来更轻盈
+    box-shadow: 0 0px 6px rgba(183, 143, 143, 0.5); // 减轻阴影效果，使其看起来更轻盈
     border-radius: 5px;
     flex-wrap: nowrap; // 确保子元素不会换行
     padding: 10px; // 调整内边距，使内容与边框之间有一定的距离
-  
+    font-family: 'MyCustomFont', sans-serif;
+
     .title {
       margin-left: 10px; // 给文字添加一些左边距，使布局更美观
       font-size: 14px; // 增大字体大小，提高可读性

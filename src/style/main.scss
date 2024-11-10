@@ -1,0 +1,15 @@
+/* main.css */
+
+@font-face {
+    font-family: 'MyCustomFont';
+    src: 
+    
+      url('../assets/fonts/font3/字小魂萌萌哒体\(商用需授权\).ttf') format('truetype'); /* 通用格式 */
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap; /* 字体加载时显示系统字体，字体加载完成后切换到自定义字体 */
+  }
+  
+  * {
+    font-family: 'MyCustomFont', sans-serif;
+  }

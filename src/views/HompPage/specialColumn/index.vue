@@ -33,9 +33,7 @@
             </titleBar>
             <div class="title-card-box">
                 <titleCard />
-                <titleCard />
-                <titleCard />
-                <titleCard />
+              
             </div>
             <div class="video-box">
                 <columnItem v-for="item in 8" :key="item" />
@@ -68,10 +66,12 @@ const alldata = {
     { url: "https://gd-hbimg.huaban.com/0b8f5d9a5de86854a932ce259ca6e9f2a71362073ce49c-JSjSOM" }
   ]
 };
+
 </script>
 
 <style scoped lang="scss">
 .specialColumn {
+    font-family: 'MyCustomFont', sans-serif;
     .topbg {
 
         width: 100%;
@@ -83,14 +83,13 @@ const alldata = {
         border-radius: 4px;
         overflow: hidden;
 
-        height: 400px;
-
+     
         margin: auto;
         margin-top: 6px;
         ::v-deep(.el-carousel__item) {
     img {
         width: 100%;
-        height: auto; /* 保持原始宽高比 */
+         /* 保持原始宽高比 */
         display: block;
     }
 }

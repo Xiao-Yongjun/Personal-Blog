@@ -72,7 +72,7 @@ import Foot from '../../components/Foot/index.vue'
         .head-div {
                 width: 100%;
                 height: 300px;
-                background-image: url('../../assets/Navigation-bar-icon/bg1.jpg');
+                background-image: url('../../assets/Navigation-bar-icon/startbg1.jpg');
                 background-position: center;
                 background-size: cover;
 

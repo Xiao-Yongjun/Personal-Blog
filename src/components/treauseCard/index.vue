@@ -15,7 +15,7 @@
 .card {
     width: 100%;
     height: 200px;
-  
+    font-family: 'MyCustomFont', sans-serif;
     position: relative;
 
     .card_content {
@@ -26,7 +26,7 @@
         left: 50%;
         top: 45%; // 添加这行，设置初始的 top 值
         transform: translate(-50%, -50%);
-        background-image: url('../../assets/Navigation-bar-icon/bg4.png');
+        background-image: url('../../assets/Navigation-bar-icon/wonderland.jpg');
         border-radius: 10px;
         animation: changePosition 1s forwards; // 使用 forwards 确保动画结束后保持最后一个关键帧的状态
         box-shadow: 0px 0px 5px 2px rgba(12, 14, 15, 0.6); // 初始阴影

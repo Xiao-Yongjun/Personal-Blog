@@ -77,12 +77,12 @@ import Foot from '../../../components/Foot/index.vue';
 <style lang="scss" scoped>
 .content {
     width: 100%;
-
+    font-family: 'MyCustomFont', sans-serif;
 
     .head-div {
         width: 100%;
         height: 300px;
-        background-image: url('../../../assets/Navigation-bar-icon/bg1.jpg');
+        background-image: url('../../../assets/Navigation-bar-icon/banner3.png');
         background-position: center;
 
         display: flex;
@@ -137,7 +137,7 @@ import Foot from '../../../components/Foot/index.vue';
     .content-div {
         width: 100%;
         position: relative;
-        background-color: rgba(224, 250, 245);
+        background-color: rgba(198, 195, 195, 0.5);
 
         padding-top: 100PX;
 

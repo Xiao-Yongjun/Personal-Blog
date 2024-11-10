@@ -149,7 +149,7 @@ const backgroundImage = computed(() => {
     background-position: center;
     padding-top: 80px;
     position: relative;
-
+    font-family: 'MyCustomFont', sans-serif;
     .shade {
         position: fixed;
         top: 0;
