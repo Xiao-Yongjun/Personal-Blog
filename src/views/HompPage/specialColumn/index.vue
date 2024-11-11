@@ -3,8 +3,8 @@
         <div class="topbg"></div>
         <div class="banner">
             <el-carousel>
-                <el-carousel-item v-for="item in 4" :key="item">
-                    <img src="../../../assets/Navigation-bar-icon/banner3.png" alt="bannertupian " style="width: 100%; height: 100%;">
+                <el-carousel-item v-for="item in bannerList" :key="item">
+                    <img :src="item.url" alt="bannertupian " style="width: 100%; height: 100%;">
                 </el-carousel-item>
             </el-carousel>
         </div>
@@ -50,7 +50,7 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { ref,onMounted } from 'vue';
 let title = ref('这是title')
 import titleBar from '../../../components/titleBar/index.vue'
 import column from '../../../components/column/index.vue'
@@ -67,6 +67,17 @@ const alldata = {
   ]
 };
 
+import {getBanner} from '../../../apis/banner'
+const bannerList=ref([])
+const gogetbanner=async()=>{
+let res=await getBanner()
+console.log(res.data.data.map(item=>({url: item.plc.url})));
+bannerList.value=res.data.data.map(item=>({url: item.plc.url}))
+
+}
+onMounted(()=>{
+    gogetbanner()
+})
 </script>
 
 <style scoped lang="scss">

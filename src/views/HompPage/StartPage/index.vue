@@ -27,7 +27,7 @@
         <transition :name="open ? 'slide-up' : 'slide-down'" appear>
             <div class="shade" v-if="open">
                 <div class="box">
-                    <div class="closebox" @click="closebox" >返回</div>
+                    <div class="closebox" @click="closebox">返回</div>
                     <div class="search">
                         <div class="text">搜索</div>
                         <el-input placeholder="输入搜索内容"></el-input>
@@ -71,15 +71,24 @@ const closebox = () => {
 };
 
 const startbg = ref([
-    { url: '/src/assets/Navigation-bar-icon/startbg1.jpg' },
-    { url: '/src/assets/Navigation-bar-icon/startbg2.jpg' },
-    { url: '/src/assets/Navigation-bar-icon/startbg3.jpg' },
+    { url: 'https://gd-hbimg.huaban.com/8cc2e9db67420744df344058560874557f6cc5416ad3-I64vT7_fw1200' },
+    { url: "../../../assets/startbg2.jpg" },
+    
+    { url: '../../../assets/startbg3.jpg' },
 ]);
 
 const backgroundImage = computed(() => {
     const randomIndex = Math.floor(Math.random() * startbg.value.length);
+    console.log(startbg.value[randomIndex].url);
+    console.log(randomIndex);
+
     return startbg.value[randomIndex].url;
 });
+
+
+onMounted(() => {
+
+})
 </script>
 
 
@@ -134,22 +143,27 @@ const backgroundImage = computed(() => {
 }
 
 @keyframes glow {
-  0%, 100% {
-    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
-  }
-  50% {
-    box-shadow: 0 0 10px rgb(247, 167, 167);
-  }
+
+    0%,
+    100% {
+        box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+    }
+
+    50% {
+        box-shadow: 0 0 10px rgb(247, 167, 167);
+    }
 }
+
 .startpage {
     width: 100%;
     height: 100vh;
-    background-size: cover;
-    background-image: url('../../../assets/Navigation-bar-icon/startbg3.jpg');
+    background-size: 100% 100%;
+  
     background-position: center;
     padding-top: 80px;
     position: relative;
     font-family: 'MyCustomFont', sans-serif;
+
     .shade {
         position: fixed;
         top: 0;
@@ -175,7 +189,8 @@ const backgroundImage = computed(() => {
                 line-height: 30px;
                 font-size: 15px;
                 border-radius: 20px;
-                animation: fadeInOut 2s infinite, glow 3s infinite;;
+                animation: fadeInOut 2s infinite, glow 3s infinite;
+                ;
             }
 
             .search {
@@ -247,7 +262,7 @@ const backgroundImage = computed(() => {
                 padding-top: 5px;
                 display: flex;
                 flex-wrap: wrap;
-              
+
                 .item {
                     width: 70px;
                     margin: 10px;
